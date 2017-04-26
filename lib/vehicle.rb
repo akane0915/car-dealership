@@ -1,10 +1,13 @@
 class Vehicle
   @@vehicles = []
 
-  define_method(:initialize) do |make, model, year|
-    @make = make
-    @model = model
-    @year = year
+  define_method(:initialize) do |attributes|
+    @make = attributes.fetch(:make)
+    @model = attributes.fetch(:model)
+    @year = attributes.fetch(:year)
+    @color = attributes.fetch(:color)
+    @engine_size= attributes.fetch(:engine_size)
+    @number_of_doors = attributes.fetch(:number_of_doors)
     @id = @@vehicles.length()+1
   end
 

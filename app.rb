@@ -44,7 +44,7 @@ post('/vehicles') do
   make = params.fetch('make')
   model = params.fetch('model')
   year = params.fetch('year')
-  @vehicle = Vehicle.new(make, model, year)
+  @vehicle = Vehicle.new({:make=>"Toyota", :model => "Prius", :year => 2000, :color => "blue", :engine_size => "4L", :number_of_doors => "4"})
   @vehicle.save()
   @dealership = Dealership.find(params.fetch('dealership_id').to_i())
   @dealership.add_vehicle(@vehicle)
