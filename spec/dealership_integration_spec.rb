@@ -11,13 +11,10 @@ describe('The dealership path', {:type => :feature}) do
     expect(page).to have_content('Enter the Dealership name:')
   end
 
-
-  # it('Processes user inputs and returns the new vehicle') do
-  #   visit('/dealerships/:id/vehicles/new')
-  #   fill_in('make', :with => 'Toyota')
-  #   fill_in('model', :with => 'Prius')
-  #   fill_in('year', :with => '2000')
-  #   click_button('Add Vehicle')
-  #   expect(page).to have_content('Toyota, Prius, 2000')
-  # end
+  it('collect user input dealership name and routes to dealership success page') do
+    visit('/dealerships/new')
+    fill_in('name', :with => 'Bobs Dealership')
+    click_button('Add Dealership')
+    expect(page).to have_content("Success! You've added a dealership!")
+  end
 end
