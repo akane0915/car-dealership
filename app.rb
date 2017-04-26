@@ -25,13 +25,12 @@ post('/dealerships') do
   erb(:success)
 end
 
-#Need to add:
-# get('/vehicles/:id') do
-#   @vehicle = Vehicle.find(params.fetch('id').to_i())
-#   erb(:vehicle)
-# end
+get('/vehicles/:id') do
+  @vehicle = Vehicle.find(params.fetch('id').to_i())
+  erb(:vehicle)
+end
 
-get('/dealership/:id') do
+get('/dealerships/:id') do
   @dealership = Dealership.find(params.fetch('id').to_i())
   erb(:dealership)
 end
