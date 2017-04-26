@@ -36,4 +36,27 @@ describe(Vehicle) do
       expect(test_vehicle.year()).to(eq(2000))
     end
   end
+
+  describe('.all') do
+    it('is empty at first') do
+      expect(Vehicle.all()).to(eq([]))
+    end
+  end
+
+  describe('#save') do
+    it('will push a new vehicle to the vehicles array') do
+      test_vehicle = Vehicle.new('Toyota','Prius',2000)
+      test_vehicle.save()
+      expect(Vehicle.all()).to(eq([test_vehicle]))
+    end
+  end
+
+  describe('.clear') do
+    it('will clear the vehicles array') do
+      test_vehicle = Vehicle.new('Toyota','Prius',2000)
+      test_vehicle.save()
+      Vehicle.clear()
+      expect(Vehicle.all()).to(eq([]))
+    end
+  end
 end
