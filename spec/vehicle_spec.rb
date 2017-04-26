@@ -2,6 +2,11 @@ require('rspec')
 require('vehicle')
 
 describe(Vehicle) do
+
+  before() do
+    Vehicle.clear()
+  end
+  
   describe('#age') do
     it('returns the vehicle age') do
       test_vehicle = Vehicle.new('Toyota','Prius',2000)
@@ -57,6 +62,24 @@ describe(Vehicle) do
       test_vehicle.save()
       Vehicle.clear()
       expect(Vehicle.all()).to(eq([]))
+    end
+  end
+
+  describe('#id') do
+    it('returns the vehicle id') do
+      test_vehicle = Vehicle.new('Toyota','Prius',2000)
+      test_vehicle.save()
+      expect(test_vehicle.id()).to(eq(1))
+    end
+  end
+
+  describe('.find') do
+    it('returns the vehicle by its id') do
+      test_vehicle = Vehicle.new('Toyota','Prius',2000)
+      test_vehicle.save()
+      test_vehicle2 = Vehicle.new('Toyota','Corolla',1999)
+      test_vehicle2.save()
+      expect(Vehicle.find(test_vehicle.id())).to(eq(test_vehicle))
     end
   end
 end

@@ -5,6 +5,7 @@ class Vehicle
     @make = make
     @model = model
     @year = year
+    @id = @@vehicles.length()+1
   end
 
   define_method(:age) do
@@ -21,6 +22,10 @@ class Vehicle
 
   define_method(:year) do
     @year
+  end
+
+  define_method(:id) do
+    @id
   end
 
   define_method(:worth_buying?) do
@@ -40,4 +45,13 @@ class Vehicle
     @@vehicles = []
   end
 
+  define_singleton_method(:find) do |identification|
+    matched_vehicle = nil
+    @@vehicles.each() do |vehicle|
+       if vehicle.id() == identification.to_i()
+         matched_vehicle = vehicle
+       end
+    end
+    matched_vehicle
+  end
 end
