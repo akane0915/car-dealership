@@ -22,7 +22,7 @@ post('/dealerships') do
   name = params.fetch('name')
   Dealership.new(name).save()
   @dealerships = Dealership.all()
-  erb(:success)
+  erb(:success_dealership)
 end
 
 get('/vehicles/:id') do
@@ -48,5 +48,5 @@ post('/vehicles') do
   @vehicle.save()
   @dealership = Dealership.find(params.fetch('dealership_id').to_i())
   @dealership.add_vehicle(@vehicle)
-  erb(:success)
+  erb(:success_vehicle)
 end
